@@ -1,0 +1,12 @@
+<odoo>
+    <record model="ir.ui.view" id="inherit_custom_hr_employee_info_view_form">
+        <field name="name">inherit.custom.hr.employee.info.view.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <field name="coach_id" position="after">
+                <field name="employee_no"/>
+            </field>
+        </field>
+    </record>
+</odoo>

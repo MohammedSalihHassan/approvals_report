@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+  
+    	<!-- Paper Format -->
+		 <record id="custom_paper_format" model='report.paperformat'> 
+			<field name="name">Common Paper Format</field>
+			<field name="format">A4</field>
+			<field name="orientation">Landscape</field> <!-- Portrait is default-->
+			<field name="margin_top">40</field>
+			<field name="margin_bottom">23</field>
+			<field name="margin_left">7</field>
+			<field name="margin_right">7</field>
+			<field name="dpi">90</field>
+			<field name="header_spacing">35</field>	
+		</record> 
+		
+
+			<!-- custom approvals report action  -->
+        <record id="action_custom_approval_report" model="ir.actions.report">
+            <field name="name"> Approvals Report</field>
+            <field name="model">approval.request</field>
+            <field name="report_type">qweb-pdf</field>
+             <field name="report_name">approvals_report.root_custom_approval_report_template</field>
+            <field name="report_file">approvals_report.root_custom_approval_report_template</field> 
+            <field name="print_report_name">'approval - %s' % (object.name).replace('/', '')</field>
+            <!-- <field name="binding_model_id" eval="False" ref="hr_saudi_approvals.model_approval_request"/> --> 
+            <field name="binding_model_id" ref="hr_saudi_approvals.model_approval_request"/>
+            <field name="binding_type">report</field>
+        </record>
+		 
+</odoo>

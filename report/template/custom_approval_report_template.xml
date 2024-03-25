@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+  <template id="root_custom_approval_report_template">
+    <t t-call="web.html_container"> 
+      <t t-foreach="docs" t-as="approval">
+        <t t-call="approvals_report.common_custom_header_footer"/>
+        <t t-call="approvals_report.custom_approval_report_template"/>
+      </t>
+    </t>
+  </template>
+
+  <template id="custom_approval_report_template">
+    <t t-call="web.external_layout">
+      <div class="row p-1 my-2" >
+        <div class="col-12 text-center" style="font-size:1.2rem;">
+          <span t-field="approval.name"/>
+        </div>
+      </div>
+      <br/>
+      <div class="row">
+        <div class="col-6 border">
+          <div class="row"> 
+            <div class="col-4">Request Owner: </div>
+            <div class="col-8"> 
+              <span t-field="approval.request_owner_id.name"/> 
+            </div>
+          </div>
+          <div class="row"> 
+            <div class="col-4">Category: </div>
+            <div class="col-8"> 
+              <span t-field="approval.category_id"/> 
+            </div>
+          </div>
+          <div class="row"> 
+            <div class="col-4">Date Confirmed: </div>
+            <div class="col-8"> 
+              <span t-field="approval.date_confirmed"/> 
+            </div>
+          </div>
+          <div class="row"> 
+            <div class="col-4">Reference: </div>
+            <div class="col-8"> 
+              <span t-field="approval.reference"/> 
+            </div>
+          </div>
+          <div class="row"> 
+            <div class="col-4">Start Date: </div>
+            <div class="col-8"> 
+              <span t-field="approval.date_start"/> 
+            </div>
+          </div>
+        </div>
+        <div class="col-6 border">
+          <div class="row"> 
+            <div class="col-4">Partner: </div>
+            <div class="col-8"> 
+              <span t-field="approval.partner_id"/> 
+            </div>
+          </div>
+          <div class="row"> 
+            <div class="col-4">Location: </div>
+            <div class="col-8"> 
+              <span t-field="approval.location"/> 
+            </div>
+          </div>
+          <div class="row"> 
+            <div class="col-4">Quantity: </div>
+            <div class="col-8"> 
+              <span t-field="approval.quantity"/> 
+            </div>
+          </div>
+          <div class="row"> 
+            <div class="col-4">Company: </div>
+            <div class="col-8"> 
+              <span t-field="approval.company_id"/> 
+            </div>
+          </div>
+          <div class="row"> 
+            <div class="col-4">End Date: </div>
+            <div class="col-8"> 
+              <span t-field="approval.date_end"/> 
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br/>
+      <div class="row p-1 my-2 border-bottom" style="background-color:#BBBBBB;">
+        <div class="col-4" style="font-size:1.2rem;">
+          Product
+        </div>
+        <div class="col-4" style="font-size:1.2rem;">
+          Description
+        </div>
+        <div class="col-4" style="font-size:1.2rem;">
+          Quantity
+        </div>
+      </div>
+      <div class="row" t-foreach="approval.product_line_ids" t-as="product">
+        <div class="col-4">
+          <span t-field="product.product_id.name"/> 
+        </div>
+        <div class="col-4">
+          <span t-field="product.description"/> 
+        </div>
+        <div class="col-4">
+          <span t-field="product.quantity"/> 
+        </div>
+      </div>
+
+      <br/>
+      <div class="row p-1 my-2 border-bottom" style="background-color:#BBBBBB;">
+        <div class="col-6" style="font-size:1.2rem;">
+          Approvers
+        </div>
+        <div class="col-6" style="font-size:1.2rem;">
+          Status
+        </div>
+      </div>
+      <div class="row" t-foreach="approval.approver_ids" t-as="approvals">
+        <div class="col-6">
+          <span t-field="approvals.user_id"/> 
+        </div>
+        <div class="col-6">
+          <span t-field="approvals.status"/> 
+        </div>
+      </div>
+    </t>
+  </template>
+
+</odoo>
